@@ -9,7 +9,7 @@ const questions = [
 ]
 
 const ask = function (index = 0) {
-    return process.stdout.write(questions[index] + '\n')
+    process.stdout.write(questions[index] + '\n')
 }
 
 ask()
@@ -25,3 +25,25 @@ process.stdin.on("data", data => { //.on fica aguardando a inserção de um novo
 })
 
 const answers = []
+
+process.on('exit', () => {
+    console.log(
+        `Cool!
+
+        What you have learned today:
+        ${answers[0]}
+
+        What have bothered you:
+        ${answers[1]}
+
+        What have jollied you:
+        ${answers[2]}
+
+        What should you do to became better:
+        ${answers[3]}
+
+        You have assisted ${answers[4]} today! That's awesome!
+
+        Comeback tomorrow for more!
+    `)
+})
