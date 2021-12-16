@@ -15,5 +15,13 @@ const ask = function (index = 0) {
 ask()
 
 process.stdin.on("data", data => { //.on fica aguardando a inserção de um novo dado
-    process.exit() //process.stdout.write(data.toString().trim()) //toString converte o dado para String e trim() remove os espaçamentos antes ou depois da string
+    answers.push(data.toString().trim()) //toString converte o dado para String e trim() remove os espaçamentos antes ou depois da string
+    if (answers.length < questions.length) {
+        ask(answers.length) //cada vez que uma resposta for adicionada, é adicionado + 1 ao length, assim como ocorre em um i++, sendo assim, a próxima mensagem do questions vai ser impressa
+    } else {
+        process.stdout.write(answers.toString())
+        process.exit() 
+    }
 })
+
+const answers = []
